@@ -15,3 +15,57 @@ In this project we will learn how to create a very simple Web API using `Node.js
 - [ ] type `npm i` to download dependencies.
 
 Please follow along as the instructor builds the API step by step.
+
+## Today
+
+- REST (REpresentational State Transfer)
+- Sub-Routes/Sub-Resources
+- Express Routers
+- Query String Parameters
+
+## REST
+
+Guidelines, not a standard.
+
+### Levels
+
+- 0 - No REST.
+- 1 - Resources.
+- 2 - HTTP Methods/Verbs.
+- 3 - Hypermedia (links).
+
+| Action                   | Endpoint    | REST Style URI         |                                |
+| :----------------------- | :---------- | :--------------------- | :----------------------------- |
+| See List of Hubs         | /hubslist   | GET /hubs              |                                |
+| See Details for a Hub    | /hubdetails | GET /hubs/:id          |                                |
+| Add a Hub                | /newhub     | POST /hubs             |                                |
+| Update a Hub             | /modifyhub  | PUT/PATCH /hubs/:id    |                                |
+| Remove a Hub             | /erasehub   | DELETE /hubs/:id       |                                |
+| See List of Tracks       |             | GET /tracks            |                                |
+| See List of Units        |             | GET /units             |                                |
+| See Units for a Track    | /trackunits | GET /tracks/:id/units  | --> sub routes                 |
+| See Units for a Track    | /trackunits | GET /units?track=1     | --> query string for filtering |
+| See Sprints for a Unit   |             | GET /units/:id/sprints |                                |
+| See Modules for a Sprint |             |                        |                                |
+
+Does the Resource makes sense by itself.
+
+Emojis as a reaction to a Slack message.
+
+`/tracks/:id/units/:id` <-- `/units/:id`
+
+## Query String Parameters
+
+https://www.google.com
+/search
+`?` --> marks the beginning of the Query String
+`source=hp` --> key/value pair
+`&` --> separates key/valu pairs
+`ei=yKSxXsmGNKut0PEP4sG1gA4&q=query+string+parameters&oq=query+string+parameters`
+
+Express turns this into:
+
+req.query = {
+source: 'hp',
+ei: 'yKSxXsmGNKut0PEP4sG1gA4&q=query+string+parameters&oq=query+string+parameters'
+}
